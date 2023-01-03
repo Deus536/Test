@@ -1,5 +1,7 @@
 package lesson1;
 
+import java.util.Arrays;
+
 public class Array {
     public static void main(String[] args) {
 
@@ -10,7 +12,11 @@ public class Array {
         multiplication();
         System.out.println("----");
         square();
+        System.out.println("----");
         oneArray();
+        System.out.println("----");
+        checkBalance();
+        System.out.println("----");
     }
 
     public static void first(){
@@ -60,12 +66,13 @@ public class Array {
         }
         System.out.println();
         for(int i = 0; i < array.length; i++){
-            for(int j = 0; j < array[i].length; j++){
-                if(i == j){
-                    array[array.length -1 - i][array.length - 1 - j ]= 1;
+            for(int j = array.length-1; j >= 0; j--){
+                if (i == j){
+                    array[i][j] = 1;
                 } else {
-                    array[array.length -1 - i][array.length -1 - j ]= 0;
-                }System.out.print(array[i][j] + " ");
+                    array[i][j] = 0;
+                }
+                System.out.print(array[i][j] + " ");
             }System.out.println();
         }
         System.out.println();
@@ -90,4 +97,24 @@ public class Array {
         System.out.println(min);
         System.out.println(max);
     }
+    public static void checkBalance(){
+        int[] array = {2, 2, 2, 1, 2, 2, 10, 1};
+        int[] array1 = Arrays.copyOf(array, 6);
+        int[] array2 = Arrays.copyOfRange(array, 6, 8);
+        int sum = 0;
+        for(int i = 0; i < array1.length;i++){
+            sum = sum + array1[i];
+        }
+        int sum2 = 0;
+        for(int j = 0; j < array2.length; j++){
+            sum2 = sum2 + array2[j];
+        }
+        if(sum == sum2){
+            System.out.println("true");
+        } else{
+            System.out.println("false");
+        }
+    }
+
 }
+
