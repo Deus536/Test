@@ -94,25 +94,22 @@ public class Array {
                 max = number;
             }
         }
-        System.out.println(min);
-        System.out.println(max);
+        System.out.println("Минимальное значание: " + min);
+        System.out.println("Максимальное значение: " + max);
     }
     public static void checkBalance(){
         int[] array = {2, 2, 2, 1, 2, 2, 10, 1};
-        int[] array1 = Arrays.copyOf(array, 6);
-        int[] array2 = Arrays.copyOfRange(array, 6, 8);
         int sum = 0;
-        for(int i = 0; i < array1.length;i++){
-            sum = sum + array1[i];
+        for(int i = 0; i < array.length; i++) {
+            sum = sum + array[i];
         }
-        int sum2 = 0;
-        for(int j = 0; j < array2.length; j++){
-            sum2 = sum2 + array2[j];
-        }
-        if(sum == sum2){
-            System.out.println("true");
-        } else{
-            System.out.println("false");
+        int right_sum = 0;
+        for(int j = 0; j < array.length; j++) {
+            right_sum = right_sum + array[j];
+            sum = sum - array[j];
+            if (right_sum == sum) {
+                System.out.println("true");
+            }
         }
     }
 
