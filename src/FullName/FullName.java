@@ -1,4 +1,4 @@
-package Lessen2;
+package FullName;
 
 public class FullName {
     public static void main(String[] args) {
@@ -33,7 +33,7 @@ class Employee {
     public int getAge() {
         return age;
     }
-    @Override
+
     public String toString(){
         return(name+ "\n-"
                 +position+ "\n-"

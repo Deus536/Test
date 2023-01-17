@@ -1,15 +1,29 @@
 package Lessen2;
 
 public class Lessen1 {
-    public void main(String[] args){
+    public static void main(String[] args){
         Dog dog = new Dog();
-        dog.run(500);
-        dog.swim(10);
-        dog.jump(0.4);
+        dog.runDog();
+        dog.swimDog();
+        dog.jumpDog();
+        System.out.println("--------");
         Cat cat = new Cat();
-        cat.run(200);
-        cat.swim(0);
-        cat.jump(2);
+        cat.jumpCat();
+        cat.runCat();
+        cat.swimCat();
+        System.out.println("--------");
+        Horse horse = new Horse();
+        horse.runHorse();
+        horse.jumpHorse();
+        horse.swimHorse();
+        System.out.println("--------");
+        Dog dog2 = new Dog();
+        dog2.runDog1();
+        dog2.jumpDog1();
+        dog2.swimDog1();
+        System.out.println("---------");
+        System.out.println("Всего животных " + Animal.getAllAnimal());
+
 
     }
 }

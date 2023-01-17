@@ -1,17 +1,15 @@
 package Lessen2;
 
 public class Animal {
-    public void run(int run) {
-
+    public static int allAnimal;
+    int run = 150;
+    double jump = 0.5;
+    int swim = 10;
+    public Animal(){
+        allAnimal++;
     }
-    public void jump(double jump) {
-
+    public static int getAllAnimal(){
+        return allAnimal;
     }
-    public void swim(int swim){
-
-    }
-
 }
-class dog extends Animal{
 
-}
