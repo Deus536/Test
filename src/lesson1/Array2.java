@@ -8,7 +8,7 @@ public class Array2 {
         array();
     }
     public static void array() {
-        int[] array = {1, 2, 3, 4, 5, 6,};
+        int[] array = {1, 2, 3, 4, 5, 6};
         int[] array2 = new int[array.length];
         int number = 1;
         if (number == 0) {
