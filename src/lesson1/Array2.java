@@ -1,30 +1,40 @@
 package lesson1;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Array2 {
 
-    public void main(String[] args){
+    public static void main(String[] args) {
         arrayClass list = new arrayClass();
-        list.setArray(1,2,3,5,6);
+        list.scan();
         list.setNumber(2);
         list.arrayList();
 
     }
-    class  arrayClass() {
-        private int[] array = new int[];
+}
+    class  arrayClass {
+        private int[] array;
         private int[] array2 = new int[array.length];
         private int number;
-
-        public void setArray(int[] array) {
-            this.array = array;
-        }
         public int[] getArray() {
             return array;
+        }
+        public void setArray(int[] array) { this.array = array; }
+        public int getNumber() {
+            return number;
         }
         public void setNumber(int number) {
             this.number = number;
         }
-        public int getNumber() {
-            return number;
+
+        public void scan(){
+            Scanner scan = new Scanner(System.in);
+            int size = scan.nextInt();
+            array = new int[size];
+            for( int i = 0; i < size; i++){
+                array[i]=scan.nextInt();
+            }
         }
 
         public void arrayList() {
@@ -55,4 +65,4 @@ public class Array2 {
 
     }
 
-}
+
