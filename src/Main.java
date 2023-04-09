@@ -1,5 +1,9 @@
+import Encapsulation.CargoTransportation;
+import Encapsulation.Dimensions;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Dimensions dimensions = new Dimensions(12, 14, 5);
+
     }
 }
