@@ -62,6 +62,10 @@ public class Computer {
         return cpu.getWeight() + ram.getWeight() + storage.getWeight() + monitor.getWeight() + keyboard.getWeight();
     }
     public String toString(){
-        return  "Процессор: количество ядер " +  cpu.getNumberOfCores() + "\n" + "Частота: " + cpu.getFrequency() + "\n" +"Производитель: " + cpu.getManufacturer();
+        return  "Процессор:" + "\n" + "Количество ядер: " +  cpu.getNumberOfCores() + ", " + "Частота: " + cpu.getFrequency() + ", " +"Производитель: " + cpu.getManufacturer() + ", " + "Вес: "+ cpu.getWeight() + "\n" +
+                "Оперативная память:" + "\n" + "Тип: " + ram.getType() + ", " + "Объем: " + ram.getVolume() + ", " + "Вес: " + ram.getWeight() + "\n" +
+                "Жесткий диск:" + "\n" + "Тип: " + storage.getType() + ", " + "Объем: " + storage.getMemory() + ", " + "Вес: " + storage.getWeight() + "\n" +
+                "Монитор:" + "\n" + "Тип: " + monitor.getType() + ", " + "Размер диоганали: " + monitor.getDiagonal() + ", " + "Вес: " + monitor.getWeight() + "\n" +
+                "Клавиатура:" + "\n" + "Тип: " + keyboard.getType() + ", " + "С подсветкой: " + keyboard.isIllumination() + ", " + "Вес: " + keyboard.getWeight();
     }
 }

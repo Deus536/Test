@@ -1,9 +1,9 @@
 public class RAM {
     private final String type;
-    private final double volume;
+    private final int volume;
     private final double weight;
 
-    public RAM(String type, double volume, double weight) {
+    public RAM(String type, int volume, double weight) {
         this.type = type;
         this.volume = volume;
         this.weight = weight;
