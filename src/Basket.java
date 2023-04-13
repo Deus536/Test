@@ -61,7 +61,7 @@ public class Basket {
             count + " шт. - " + price;
         totalPrice = totalPrice + count * price;
         allTotalCountBaskets += count;
-        allTotalPriceBaskets += allTotalPriceBaskets + count * price;
+        allTotalPriceBaskets += count * price;
     }
     public void add(String name, int price, int count, double weight){
         add(name, price, count);
