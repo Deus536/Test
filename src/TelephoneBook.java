@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class TelephoneBook {
     public static void getBook() throws IOException {
-        TreeMap<String, String> map = new TreeMap<>() {
+        TreeMap<String, PhoneStorage> map = new TreeMap<>() {
         };
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -21,38 +21,42 @@ public class TelephoneBook {
             Matcher matcherNumber = patternNumber.matcher(str);
 //            Matcher matcherBug = patternBug.matcher(str);
             String commands = "LIST";
+            boolean isCorrect = false;
             if (str.equals(commands)) {
+//                if (!map.isEmpty()) {
+//                    System.out.println("Список всех контактов: \nИмя - " + map.keySet() + ". Номер телефона - " + map.values());
+//                } else {
+//                    System.out.println("Список пуст");
+//                }
                 if (!map.isEmpty()) {
-                    System.out.println("Список всех контактов: \nИмя - " + map.keySet() + ". Номер телефона - " + map.values());
+                    for (Map.Entry entry : map.entrySet()) {
+                        System.out.print("Список всех контактов: \nИмя - " + entry.getKey() + " Номер телефона - " );
+                        PhoneStorage storage = (PhoneStorage) entry.getValue();
+                        for (String phone : storage.getNumbers()) {
+                            System.out.print(phone + ", ");
+                        }
+                        System.out.println();
+                    }
                 } else {
-                    System.out.println("Список пуст");
+                    System.out.println("Список пуст.");
                 }
-//                boolean presence = false;
-//                for (String key : map.keySet()) {
-//                    Integer value = Integer.valueOf(map.get(key));
-//                    System.out.println("Список всех контактов: \nИмя - " + key + ". Номер телефона - " + value);
-//                    presence = true;
-//                }
-//                if (!presence) {
-//                    System.out.println("Список пуст.");
-//                }
+                isCorrect = true;
             }
             if (matcherName.find()) {
                 if (map.containsKey(str)) {
-                    for (Map.Entry entry : map.entrySet()){
-                        if(entry.getKey().equals(str)){
-
-                        }
+                    map.get(str);
+                    System.out.print(str + " - ");
+                    for (String phoneNumber : map.get(str).getNumbers()) {
+                        System.out.print(phoneNumber + ", ");
                     }
-                        map.get(str);
-                    System.out.println(str + " - " + map.get(str));
+                    System.out.println();
                 } else {
                     System.out.println("Введите телефон для абаннента \"" + str + "\" :");
                     String tel = bufferedReader.readLine();
                     while (true) {
                         Matcher matcherTel = patternNumber.matcher(tel);
                         if (matcherTel.find()) {
-                            map.put(str, tel);
+                            map.put(str, new PhoneStorage(tel));
                             System.out.println("Контанкт сохранен!");
                             break;
                         } else {
@@ -61,13 +65,17 @@ public class TelephoneBook {
                         }
                     }
                 }
+                isCorrect = true;
             }
             if (matcherNumber.find()) {
                 boolean presence = false;
                 for (Map.Entry entry : map.entrySet()) {
-                    if (entry.getValue().equals(str)) {
-                        System.out.println(entry.getKey() + " - " + str);
-                        presence = true;
+                    PhoneStorage storage = (PhoneStorage) entry.getValue();
+                    for (String phone : storage.getNumbers()) {
+                        if (phone.equals(str)) {
+                            System.out.println(entry.getKey() + " - " + str);
+                            presence = true;
+                        }
                     }
                 }
                 if (!presence) {
@@ -76,7 +84,11 @@ public class TelephoneBook {
                     while (true) {
                         Matcher matcherName1 = patternName.matcher(name);
                         if (matcherName1.find()) {
-                            map.put(name, str);
+                            if (map.containsKey(name)) {
+                                map.get(name).getNumbers().add(str);
+                            } else {
+                                map.put(name, new PhoneStorage(str));
+                            }
                             System.out.println("Контанкт сохранен!");
                             break;
                         } else {
@@ -85,6 +97,10 @@ public class TelephoneBook {
                         }
                     }
                 }
+                isCorrect = true;
+            }
+            if (!isCorrect) {
+                System.out.println("Не праильный формат ввода");
             }
         }
     }
